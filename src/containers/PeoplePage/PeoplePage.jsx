@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './PeoplePage.module.css';
 import {API_PEOPLE} from "../../constants/api";
 import {getApiResource} from "../../utils/network";
-import {getPeopleId} from "../../services/getPeopleData";
+import {getPeopleId, getPeopleImage} from "../../services/getPeopleData";
 
 const PeoplePage = () => {
     const [people, setPeople] = useState(null);
@@ -12,6 +12,7 @@ const PeoplePage = () => {
 
         const peopleList = res.results.map(({name, url}) => {
             const id = getPeopleId(url)
+            const img = getPeopleImage(id)
 
             return {
                 name,
